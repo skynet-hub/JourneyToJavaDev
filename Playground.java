@@ -1,4 +1,4 @@
-import java.util.Scanner;
+// import java.util.Scanner;
 
 // public class Playground {
 //     public static void main(String[] args) {
@@ -63,40 +63,49 @@ import java.util.Scanner;
 
 //Nested switch cases..........
 
-public class Playground {
-    public static void main (String[] args) {
-        Scanner scanner = new Scanner(System.in);
+// public class Playground {
+//     public static void main (String[] args) {
+//         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Make a choice between a and b");
-        String symbol = scanner.nextLine();
+//         System.out.println("Make a choice between a and b");
+//         String symbol = scanner.nextLine();
 
-        switch (symbol) {
-            case "a":
-                System.out.println("Select a number between 1 and 2");
-                int num = scanner.nextInt();
+//         switch (symbol) {
+//             case "a":
+//                 System.out.println("Select a number between 1 and 2");
+//                 int num = scanner.nextInt();
                 
-                switch (num) {
-                    case 1:
-                        System.out.println("Congrats, great choice!");
-                        break;
-                    case 2:
-                        System.out.println("You chose 2, Bad choice");
-                        break;
-                    default:
-                        System.out.println("Not a valid option");
-                        break;
-                }
-                break;
-            case "b":
-                System.out.println("Bad choice, better luck next time");
-                break;
-            default:
-                System.out.println("Not a valid option");
-                break;        
-        }
+//                 switch (num) {
+//                     case 1:
+//                         System.out.println("Congrats, great choice!");
+//                         break;
+//                     case 2:
+//                         System.out.println("You chose 2, Bad choice");
+//                         break;
+//                     default:
+//                         System.out.println("Not a valid option");
+//                         break;
+//                 }
+//                 break;
+//             case "b":
+//                 System.out.println("Bad choice, better luck next time");
+//                 break;
+//             default:
+//                 System.out.println("Not a valid option");
+//                 break;        
+//         }
 
 
-        scanner.close();
+//         scanner.close();
 
-    }
-}
+//     }
+// }
+
+// public class Playground {
+//     public static void main(String[] args) {
+//         for (int i=10; i >= 0; i--) {
+//             System.out.println(i);
+//         }
+//     }   
+// }
+
