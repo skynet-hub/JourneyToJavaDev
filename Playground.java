@@ -109,3 +109,34 @@
 //     }   
 // }
 
+public class Playground {
+    public static void main(String[] args) {
+        //Playing with arrays 
+
+        int[] numbers; //This array has been declared but not yet takes up space.
+
+        //The number 5 is the length pf the array
+        numbers = new int[5]; //Now the array will take up space in memore
+        
+        //Here's another way to create an array
+
+        int[] evens = {1, 2, 3, 4, 5};
+
+        //iterating arrays 
+
+        for (int i=0; i< numbers.length; i++) {
+            //let us double numbers in array
+            numbers[i] *= 2;
+            System.out.println(numbers[i]);
+        }
+
+        //Now let us do a for each(enhanced for loop)
+
+        String[] friends = {"Dave", "Tsheks", "Des"};
+
+        for (String friend :friends) {
+            System.out.printf("Hi there, dear %s\n", friend);
+        }
+    }
+}
+
