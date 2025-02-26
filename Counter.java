@@ -38,3 +38,4 @@ public class Counter {
         scanner.close();
     }  
 }  
+
