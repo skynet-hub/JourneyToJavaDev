@@ -120,7 +120,7 @@ public class Playground {
         
         //Here's another way to create an array
 
-        int[] evens = {1, 2, 3, 4, 5};
+        // int[] evens = {1, 2, 3, 4, 5};
 
         //iterating arrays 
 
