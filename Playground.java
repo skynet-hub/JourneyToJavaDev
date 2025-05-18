@@ -137,6 +137,17 @@ public class Playground {
         for (String friend :friends) {
             System.out.printf("Hi there, dear %s\n", friend);
         }
+
+        String[][] spaceGrid = {{"Empty", "Asteroids", "Planet"},
+                {"Alien Ship", "Empty", "Space Station"},
+                {"Comet", "Black Hole", "Empty"}};
+
+        for (String[] row: spaceGrid){
+            for (String event: row){
+                System.out.print(event + " ");
+            }
+            System.out.println();
+        }
     }
 }
 
