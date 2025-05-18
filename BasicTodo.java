@@ -40,6 +40,8 @@ public class BasicTodo {
                 System.out.println("Exiting the TODO List Application. Goodbye!");
             } else if (choice == 2){
                 removeTask(scanner);
+            } else {
+                System.out.println("Invalid choice. Please select a valid option.");
             }
         }
     }
@@ -66,6 +68,10 @@ public class BasicTodo {
         // Display the current tasks
         // Remove the task
         //We remove the task by number
+        if (todoList.isEmpty()) {
+            System.out.println("The TODO list is empty. Nothing to remove.");
+            return;
+        }
         System.out.print("Enter the number of the task you want to remove (1, 2, 3): ");
         try {
             todoList.remove(scanner.nextInt() - 1); //Computer index starts from 0
@@ -78,6 +84,9 @@ public class BasicTodo {
 
     // Method to display all tasks in the TODO list
     private static void displayTasks() {
+        if (todoList.isEmpty()){
+            System.out.println("The TODO list is currently empty.");
+        }
         for (String task: todoList){
             System.out.println(task);
         }
