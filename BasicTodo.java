@@ -37,7 +37,7 @@ public class BasicTodo {
                 displayTasks();
             } else if (choice == 4){
                 isRunning = false;
-                System.out.println("Hope to see you soon!");
+                System.out.println("Exiting the TODO List Application. Goodbye!");
             } else if (choice == 2){
                 removeTask(scanner);
             }
