@@ -1,0 +1,23 @@
+package org.example;
+import io.javalin.Javalin;
+
+public class TestableWebbyHelloWorld {
+    private final Javalin server;
+    public TestableWebbyHelloWorld(){
+        this.server = Javalin.create();
+        this.server.get("hello", context -> context.result("Hello world\n"));
+    }
+
+    public Javalin start(){
+        return this.server.start(7000);
+    }
+
+    public Javalin stop(){
+        return this.server.stop();
+    }
+
+    public static void main(String[] args){
+       TestableWebbyHelloWorld webApi = new TestableWebbyHelloWorld();
+       webApi.start();
+    }
+}
