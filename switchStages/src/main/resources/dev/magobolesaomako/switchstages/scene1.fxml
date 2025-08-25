@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="CENTER" vgap="10.0" hgap="10.0"  xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="dev.magobolesaomako.switchstages.HelloController"
+            prefHeight="400.0" prefWidth="600.0">
+    <VBox spacing="10.0" alignment="CENTER">
+        <Label text="Scene One" />
+        <HBox spacing="15.0">
+        <Button text="Scene 2" prefWidth="100.0" onAction="#switchToScene2" prefHeight="60.0" />
+        <Button text="Close"  onAction="#stopApplication"/>
+        </HBox>
+    </VBox>
+
+</GridPane>
