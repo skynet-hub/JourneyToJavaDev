@@ -25,6 +25,7 @@ public class TodoController {
 
     @FXML
     public void initialize(){
+        taskList = new TaskList();
         statusComboBox.getItems().addAll("All", "Todo", "InProgress", "Done");
         statusComboBox.setValue("All");
 
