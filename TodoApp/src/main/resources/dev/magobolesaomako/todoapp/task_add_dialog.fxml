@@ -14,16 +14,17 @@
       prefHeight="500.0" prefWidth="600.0"
       spacing="10"
       alignment="CENTER"
+      styleClass="dialog-pane"
 >
     <Label text="Add new Task" />
-    <MFXTextField fx:id="taskTitleField" promptText="Enter task title" floatingText="Task Title" prefWidth="400" />
+    <MFXTextField fx:id="taskTitleField" promptText="Enter task title" floatingText="Task Title" prefWidth="400" styleClass="dialog-title"/>
 
     <Label text="Task Description" />
     <TextArea fx:id="taskDescriptionField" promptText="Enter a task description" wrapText="true" prefWidth="400" prefHeight="200" />
 
     <HBox spacing="10" alignment="CENTER_RIGHT" >
         <Region HBox.hgrow="ALWAYS" />
-        <MFXButton text="Cancel" onAction="#handleCancel" prefWidth="80" prefHeight="30" />
-        <MFXButton text="Submit" onAction="#handleSubmit" prefHeight="30" prefWidth="80" />
+        <MFXButton text="Cancel" styleClass="cancel-button" onAction="#handleCancel" prefHeight="30" />
+        <MFXButton text="Submit" onAction="#handleSubmit" prefHeight="30" />
     </HBox>
 </VBox>

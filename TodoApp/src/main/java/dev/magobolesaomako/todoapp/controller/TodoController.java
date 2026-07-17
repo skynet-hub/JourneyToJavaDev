@@ -3,19 +3,15 @@ package dev.magobolesaomako.todoapp.controller;
 import dev.magobolesaomako.todoapp.dto.TaskDTO;
 import dev.magobolesaomako.todoapp.managers.TaskList;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
-import io.github.palexdev.materialfx.controls.MFXTextField;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.DialogPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class TodoController {
@@ -59,6 +55,8 @@ public class TodoController {
             dialogStage.setMinWidth(450);
             dialogStage.initModality(Modality.APPLICATION_MODAL);
             Scene scene = new Scene(dialogPane);
+            String css = this.getClass().getResource("/dev/magobolesaomako/todoapp/addtaskstyles.css").toExternalForm();
+            scene.getStylesheets().add(css);
             dialogStage.setScene(scene);
             dialogStage.showAndWait();
 
@@ -72,6 +70,10 @@ public class TodoController {
 
         taskList.addTask(newTask);
         displayTask(newTask);
+    }
+
+    public void addTaskFromDialog(String title, String description){
+        addTask(title, description, LocalDateTime.now(), "ToDo");
     }
 
     public void displayTask(TaskDTO task){
