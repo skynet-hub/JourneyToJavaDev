@@ -13,6 +13,6 @@ public class AppConfig {
 
     @Bean
     public NotificationService notificationService(){
-        return new NotificationService(emailService());
+        return new NotificationService();
     }
 }
