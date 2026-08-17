@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 public class Car {
 
     @Autowired
-    public Engine engine;
+    public Engine petrolEngine;
 
     public void drive(){
-        System.out.println(engine.start());
+        System.out.println(petrolEngine.start());
     }
 
 }
