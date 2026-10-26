@@ -6,15 +6,13 @@ import tools.jackson.databind.ObjectMapper;
 
 public class Main {
     public static void main(String[] args) {
-        Person zach = new Person();
-        zach.setName("Zach");
-        zach.setAge(20);
-
+        String jsonString = "{\"name\":\"Alice\",\"age\":28}";
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            // Serialization
-            String jsonString = objectMapper.writeValueAsString(zach);
-            System.out.println("Stringified JSon: " + jsonString);
+            // Deserialization
+            Person alice = objectMapper.readValue(jsonString, Person.class);
+            System.out.println("Name: " + alice.getName());
+            System.out.println("Age: " + alice.getAge());
         } catch (JacksonException e) {
             throw new RuntimeException(e);
         }
