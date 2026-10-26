@@ -26,7 +26,7 @@ public class userController {
         profiles.add(new UserProfile("Botshelo", 35, "tsheks@gmail.com", "Zim"));
     }
 
-    @GetMapping("/users/{username")
+    @GetMapping("/users/{username}")
     public ResponseEntity<String> getUserProfileByUsername(@PathVariable String username){
         // Find iser by username
         UserProfile profile = profiles.stream()
@@ -46,7 +46,7 @@ public class userController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/users")
     public ResponseEntity<String> listProfilesByAge(@RequestParam(required = false) Integer age){
         List<UserProfile> filteredProfiles;
 
