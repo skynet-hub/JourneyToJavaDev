@@ -19,7 +19,7 @@ repositories {
 
 dependencies {
 	// Source: https://mvnrepository.com/artifact/tools.jackson.core/jackson-databind
-	implementation group: 'tools.jackson.core', name: 'jackson-databind', version: '3.2.4'
+	implementation 'tools.jackson.core:jackson-databind'
 	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
