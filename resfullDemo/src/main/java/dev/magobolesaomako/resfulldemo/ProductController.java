@@ -37,6 +37,37 @@ public class ProductController {
     public ResponseEntity<List<Product>> getProducts() {
         return new ResponseEntity<>(readProductsFromFile(), HttpStatus.OK);
     }
+
+
+    @GetMapping("/products/{id}")
+    public ResponseEntity<Product> getProductById(@PathVariable("id") Long id) {
+        List<Product> products = readProductsFromFile();
+        for (Product product: products) {
+            if (product.getId() == id) {
+                return new ResponseEntity<>(product, HttpStatus.OK);
+            }
+        }
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+
+    @PutMapping("/products/{id}")
+    public ResponseEntity<Product> updateProductById(@PathVariable("id") long id,
+                                                     @RequestBody Product updatedProduct) {
+        List<Product> products = readProductsFromFile();
+        for (Product product: products) {
+            if (product.getId() == id) {
+                product.setName(updatedProduct.getName());
+                product.setPrice(updatedProduct.getPrice());
+                writeToFile(products);
+                return new ResponseEntity<>(product, HttpStatus.OK);
+            }
+        }
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
     private List<Product> readProductsFromFile(){
         File file = new File(FILE_PATH);
 
@@ -46,18 +77,6 @@ public class ProductController {
 
         return mapper.readValue(file, new TypeReference<List<Product>>() {
         });
-    }
-
-    @GetMapping("/products/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
-         List<Product> products = readProductsFromFile();
-         for (Product product: products) {
-             if (product.getId() == id) {
-                 return new ResponseEntity<>(product, HttpStatus.OK);
-             }
-         }
-
-         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     private void writeToFile(List<Product> products){
