@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Getter
 @Service
-public class productService {
+public class ProductService {
 
     //Method to retrieve all products
     //List simulating an in-memory database of products

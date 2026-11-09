@@ -1,6 +1,7 @@
 package dev.magobolesaomako.resfulldemo.controller;
 
 import dev.magobolesaomako.resfulldemo.model.Product;
+import dev.magobolesaomako.resfulldemo.service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +15,11 @@ import java.util.List;
 @RestController
 public class ProductController {
 
-    private final static String FILE_PATH = "products.json";
-    ObjectMapper mapper = new ObjectMapper();
+    private ProductService productService;
+
+    public ProductController(ProductService productService){
+        this.productService = productService;
+    }
 
     /*
     A method to post a product
@@ -23,64 +27,33 @@ public class ProductController {
 
     @PostMapping("/products")
     public ResponseEntity<String> createProduct(@RequestBody Product product) {
-        // Do something with the product
-        // Read from the file and then write the products together with the newly added into the file
-        List<Product> products = readProductsFromFile();
-        products.add(product);
-        writeToFile(products);
-
-        return new ResponseEntity<>("Product created successfully: " + product.getName() + "\n",
-                HttpStatus.CREATED);
+        productService.addProduct(product);
+        return new ResponseEntity<>("Product added successfully", HttpStatus.CREATED);
     }
 
     @GetMapping("/products")
-    public ResponseEntity<List<Product>> getProducts() {
-        return new ResponseEntity<>(readProductsFromFile(), HttpStatus.OK);
+    public List<Product> getProducts() {
+        return productService.getProducts();
     }
-
-
-    @GetMapping("/products/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable("id") Long id) {
-        List<Product> products = readProductsFromFile();
-        for (Product product: products) {
-            if (product.getId() == id) {
-                return new ResponseEntity<>(product, HttpStatus.OK);
-            }
-        }
-
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-
 
     @PutMapping("/products/{id}")
-    public ResponseEntity<Product> updateProductById(@PathVariable("id") long id,
+    public ResponseEntity<String> updateProductById(@PathVariable("id") long id,
                                                      @RequestBody Product updatedProduct) {
-        List<Product> products = readProductsFromFile();
-        for (Product product: products) {
-            if (product.getId() == id) {
-                product.setName(updatedProduct.getName());
-                product.setPrice(updatedProduct.getPrice());
-                writeToFile(products);
-                return new ResponseEntity<>(product, HttpStatus.OK);
-            }
+        if (productService.updateProduct(id, updatedProduct)) {
+            return new ResponseEntity<>("product updated successfully", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Product Not found", HttpStatus.NOT_FOUND);
         }
-
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    private List<Product> readProductsFromFile(){
-        File file = new File(FILE_PATH);
+    // Mapping to delete a product
 
-        if (!file.exists()){
-            return new ArrayList<>();
+    @DeleteMapping("/products/{id}")
+    public ResponseEntity<String> deleteProduct(@PathVariable long id){
+        if(productService.deleteProduct(id)){
+            return new ResponseEntity<>("Product deleted succcessfully", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Product not found", HttpStatus.NOT_FOUND);
         }
-
-        return mapper.readValue(file, new TypeReference<List<Product>>() {
-        });
-    }
-
-    private void writeToFile(List<Product> products){
-        File file = new File(FILE_PATH);
-        mapper.writeValue(file, products);
     }
 }
