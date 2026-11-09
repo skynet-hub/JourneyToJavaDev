@@ -1,4 +1,4 @@
-package dev.magobolesaomako.resfulldemo;
+package dev.magobolesaomako.resfulldemo.model;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,6 +1,6 @@
-package dev.magobolesaomako.resfulldemo;
+package dev.magobolesaomako.resfulldemo.controller;
 
-import org.springframework.http.HttpHeaders;
+import dev.magobolesaomako.resfulldemo.model.Product;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
